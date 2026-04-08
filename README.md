@@ -24,15 +24,9 @@ This project provides tools for analyzing maritime vessel data from CSV files, i
 
 ```
 CSV_DATA_ANALYSIS/
-├── .github/
-│   └── copilot-instructions.md
 ├── src/
 │   └── __init__.py
-├── tests/
-│   └── __init__.py
-├── data/
-│   └── .gitkeep
-├── .gitignore
+|   └── *.py
 ├── requirements.txt
 ├── README.md
 └── main.py
@@ -70,6 +64,7 @@ CSV_DATA_ANALYSIS/
 4. **Visualization dependencies** (for Options 20-21):
    - The visualization scripts require PySpark and Folium
    - Ensure Spark is properly configured if using distributed processing
+   - NFS data sharing requires multiprocessing to be enabled
    - For local processing, PySpark will run in standalone mode
 
 5. **macOS users**: Verify gsort installation:
@@ -95,15 +90,9 @@ The application will display a welcome screen with:
 - Master index analysis settings
 - Interactive menu to choose analysis mode
 
-### Running Tests
-
-```bash
-pytest tests/
-```
-
 ## Features
 
-### 0. Clean AIS Database Creation (NEW)
+### 0. Clean AIS Database Creation
 - Create filtered and deduplicated AIS database from raw CSV files
 - **Two-pass processing**:
   - Phase 1: Statistical analysis with multiprocessing
@@ -162,9 +151,8 @@ pytest tests/
   - Suspicious vessel flags (high speed with low sample count)
 - Report saved to `consolidated_speed_report.Class_A.csv`
 
-### 5. Vessel Proximity Analysis (Updated v0.0.10c)
+### 5. Vessel Proximity Analysis
 - Detect vessels sailing close to each other for extended periods
-- **NEW in v0.0.10c**:
   - Parallel chunk-based verification processing (3-5x faster)
   - Enhanced macOS support with `gsort` for better resource management
   - Automatic CPU core detection for optimal performance
@@ -186,7 +174,7 @@ pytest tests/
   - Gap report: `laivai_dingimai.csv` (vessels disappearing from AIS)
   - Draught changes: `mmsi_draught_change.csv` (suspicious draught modifications)
 
-### 7. MMSI Outlier Analysis (NEW)
+### 7. MMSI Outlier Analysis
 - Detect suspicious position jumps in vessel tracking data
 - Uses sharding for parallel processing of large datasets
 - Filters by vessels from proximity analysis (optional)
@@ -195,7 +183,7 @@ pytest tests/
   - Summary: `mmsi_outlier_summary.csv` (vessels ranked by outlier count)
   - Details: `mmsi_outlier_details.csv` (individual position jump records)
 
-### 8. Final Comprehensive Report (NEW)
+### 8. Final Comprehensive Report
 - Consolidates results from all analysis modules into single report
 - Generates main report sections:
   - Vessel identification anomalies (IMO/MMSI relationships)
@@ -214,7 +202,7 @@ pytest tests/
     - `dfsi_high_risk_sorted.csv` - High-risk vessels (DFSI > 0), sorted by risk
 - Report saved to: `Final_Comprehensive_Report.txt`
 
-### 9. Vessel Proximity Visualization - Short Version (NEW)
+### 9. Vessel Proximity Visualization - Short Version
 - Generate interactive HTML maps for vessel proximity incidents
 - **Features**:
   - Cleaned trajectory visualization (removes position jumps >60 knots)
@@ -227,7 +215,7 @@ pytest tests/
   - Output saved to: `Geo_Maps_Clean/` folder
 - **Prerequisites**: Run Vessel Proximity Analysis (Option 4) first
 
-### 10. Vessel Proximity Visualization - Full Version (NEW)
+### 10. Vessel Proximity Visualization - Full Version
 - Comprehensive interactive HTML maps with detailed analysis
 - **Features**:
   - Detailed trajectory visualization with full data
@@ -259,13 +247,8 @@ CSV_DATA_ANALYSIS/
 │   ├── Laivu_Vizualizacija__SHORT.py   # Short version proximity visualization
 │   ├── Laivu_Vizualizacija__FULL.py    # Full version proximity visualization
 │   └── config.py                   # Centralized configuration management
-├── tests/
-│   ├── __init__.py
-│   ├── test_csv_scanner.py
-│   ├── test_master_indexes.py
-│   └── test_csv_scanner_enhanced.py
 ├── data/
-│   └── sample_mobiles.csv
+│   └── MMSI_Codes.csv
 ├── requirements.txt
 ├── README.md
 ├── CONFIGURATION_GUIDE.md          # Complete configuration reference
