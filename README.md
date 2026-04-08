@@ -46,7 +46,7 @@ CSV_DATA_ANALYSIS/
 - pip (Python package manager)
 - **macOS users only**: GNU coreutils (for `gsort` command)
   ```bash
-  brew install gsort
+  brew install coreutils
   ```
 
 ### Installation
