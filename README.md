@@ -80,6 +80,8 @@ CSV_DATA_ANALYSIS/
 
 ### Usage
 
+Upload CSV files that you wish to analyze to /CSV_Data_Analysis/Duomenys_CSV_Formate folder.
+
 Run the main script:
 ```bash
 python main.py
