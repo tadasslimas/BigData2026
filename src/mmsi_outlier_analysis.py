@@ -39,10 +39,7 @@ except ImportError:
 # Module-specific configuration
 # Use Clean_AIS_DB as data source if available
 clean_db_file = CLEAN_DB_FOLDER_PATH / "Clean_AIS_DB.csv"
-if clean_db_file.exists():
-    DATA_FOLDER = CLEAN_DB_FOLDER_PATH
-else:
-    DATA_FOLDER = FOLDER_PATH
+DATA_FOLDER = CLEAN_DB_FOLDER_PATH
 
 VESSELS_PROXIMITY_FILE = OUTPUT_REPORT_FOLDER / "vessel_proximity_meetings.csv"
 TEMP_SHARD_DIR = GLOBAL_TMP_FOLDER / "temp_shards"
