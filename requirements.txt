@@ -9,6 +9,6 @@ pyarrow>=10.0.0
 
 # Optional: Enhanced sorting performance on macOS
 # Install gsort for better memory management during vessel proximity analysis:
-#   macOS: brew install gsort
+#   macOS: brew install coreutils
 #   Linux: gsort is typically pre-installed as 'sort'
 #   Windows: Use WSL or install Git Bash for sort command
